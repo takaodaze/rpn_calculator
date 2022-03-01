@@ -81,3 +81,19 @@ fn run<R: BufRead>(reader: R, verbose: bool) {
         println!("{}", answer)
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_ok() {
+        assert_eq!(2 * 2, 4);
+    }
+    #[test]
+    #[should_panic]
+    fn test_ng() {
+        let calc = RpnCalculator::new(false);
+        calc.eval("1 1 ^");
+    }
+}
